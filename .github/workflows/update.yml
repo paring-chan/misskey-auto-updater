@@ -26,16 +26,19 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Check file existence'
+        id: check_update
         uses: andstor/file-existence-action@v2
         with:
           files: 'is_updated'
       - name: Log in to Docker Hub
+        if: steps.check_update.outputs.files_exists == 'true'
         uses: docker/login-action@v2
         with:
           registry: ghcr.io
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Build and Push to Docker Hub
+        if: steps.check_update.outputs.files_exists == 'true'
         uses: docker/build-push-action@v3
         with:
           context: ./misskey
@@ -43,6 +46,7 @@ jobs:
           tags: ghcr.io/pikokr/misskey:latest
           labels: develop
       - name: Send update signal to kubernetes
+        if: steps.check_update.outputs.files_exists == 'true'
         run: bash ./updater/deploy.sh
         env:
           API_ENDPOINT: ${{ secrets.KUBE_API_ENDPOINT }}
