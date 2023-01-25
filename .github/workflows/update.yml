@@ -23,6 +23,8 @@ jobs:
       - run: sudo apt update && sudo apt install -y jq
       - name: Write version
         run: bash ./updater/update.sh
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Check file existence'
         uses: andstor/file-existence-action@v2
         with:

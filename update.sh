@@ -14,9 +14,11 @@ git add .
 
 git config user.name github-actions[bot]
 
-git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+git config user.email github-actions[bot]@users.noreply.github.com
 
 git commit -m 'update version' || echo 'nothing to commit'
+
+git remote set-url origin "https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${REPOSITORY}.git"
 
 git push
 
