@@ -12,7 +12,7 @@ cd ../state
 
 git add .
 
-git commit -m 'update version' || echo 'nothing to commit'
+git commit -m 'update version' --author="github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>" || echo 'nothing to commit'
 
 git push
 
