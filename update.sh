@@ -18,9 +18,7 @@ git config user.email github-actions[bot]@users.noreply.github.com
 
 git commit -m 'update version' || echo 'nothing to commit'
 
-git remote set-url origin "https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-
-git push
+git push "https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" state
 
 function update {
   cd ../updater
