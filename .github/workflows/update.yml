@@ -25,6 +25,7 @@ jobs:
         run: bash ./updater/update.sh
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MISSKEY_TOKEN: ${{ secrets.MISSKEY_TOKEN }}
       - name: 'Check file existence'
         id: check_update
         uses: andstor/file-existence-action@v2
