@@ -22,9 +22,7 @@ git push "https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY
 
 function update {
   cd ../updater
-  VERSION=$(bash ./set-version.sh)
-
-  bash ./generate-body.sh
+  VERSION=$(bash ./set-version.sh) bash ./generate-body.sh
 
   curl -X POST --data "$(cat ../content.json)" -H "Content-Type: application/json" https://pikokr.dev/api/notes/create
 
