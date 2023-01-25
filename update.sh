@@ -26,7 +26,7 @@ function update {
 
   bash ./generate-body.sh
 
-  curl -X POST --data "$(cat ../content.json)" https://pikokr.dev/api/notes/create
+  curl -X POST --data "$(cat ../content.json)" -H "Content-Type: application/json" https://pikokr.dev/api/notes/create
 
   echo "" > ../is_updated
 }
