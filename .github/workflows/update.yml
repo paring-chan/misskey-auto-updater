@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          repository: 'misskey-dev /misskey'
+          repository: 'misskey-dev/misskey'
           ref: 'develop'
           path: 'misskey'
       - uses: actions/checkout@v3
